@@ -5,6 +5,8 @@
 #include <queue>
 #include <random>
 
+#include <chrono>
+
 enum T_piece { T_NONE = 0, T_I, T_T, T_S, T_Z, T_L, T_J, T_O, T_nb };
 
 struct fallingPiece;
@@ -98,6 +100,13 @@ struct fallingPiece {
       rotation = newrot;
   }
   void tick_down() {
+    auto time_now = std::chrono::system_clock::now();
+    long tick_duration = std::chrono::duration_cast<std::chrono::milliseconds>(
+                             time_now - time_of_last_tick)
+                             .count();
+    if (tick_duration < 600)
+      return;
+    time_of_last_tick = time_now;
     if (type == 0)
       type = get_next_type();
     if (checkCol(b, type, rotation, x, y + 1))
@@ -109,9 +118,18 @@ struct fallingPiece {
       y = 0;
       type = types.next();
       rotation = 0;
+      if (!checkCol(b, type, rotation, x, y)) {
+        exit(0);
+      }
     }
   }
   void draw();
+
+private:
+  std::chrono::time_point<
+      std::chrono::system_clock,
+      std::chrono::duration<long, std::ratio<1, 1000000000>>>
+      time_of_last_tick = std::chrono::system_clock::now();
 };
 
 fallingPiece fp;
@@ -306,7 +324,8 @@ void tetrisGame::update(char c) {
     if (checkCol(b, fp.type, fp.rotation, fp.x - 1, fp.y))
       fp.x--;
   if (c == 's')
-    fp.tick_down();
+    if (checkCol(b, fp.type, fp.rotation, fp.x, fp.y + 1))
+      fp.y++;
   if (c == 'd')
     if (checkCol(b, fp.type, fp.rotation, fp.x + 1, fp.y))
       fp.x++;
@@ -314,6 +333,7 @@ void tetrisGame::update(char c) {
     fp.rotate();
   if (c == 'p')
     fp.type = (fp.type + 1) % T_nb;
+  fp.tick_down();
 }
 
 void tetrisGame::draw() {
