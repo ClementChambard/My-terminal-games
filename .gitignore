@@ -1,0 +1,8 @@
+.cmake/
+.cache/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+cmake_install.cmake
+compile_flags.txt
+kilo
