@@ -28,6 +28,21 @@ struct appendBuffer {
 
 appendBuffer ab;
 int lastCol = 37;
+color lastCol_val = 0xFFFFFF;
+
+void ab_pixel_here(color color_val) {
+  if (lastCol != 38 || lastCol_val != color_val) {
+    lastCol = 38;
+    lastCol_val = color_val;
+    ab.appendf("\x1b[38;2;%d;%d;%dm", color_val.r, color_val.g, color_val.b);
+  }
+  ab.append("\u2588\u2588");
+}
+
+void ab_pixel(int x1, int y1, color color_val) {
+  ab_cursor(x1, y1);
+  ab_pixel_here(color_val);
+}
 
 void ab_append(std::string const &s) { ab.append(s); }
 
