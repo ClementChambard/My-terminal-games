@@ -1,30 +1,5 @@
-* Playfield
 
-  The playfield (known as the Matrix in the guideline) is 10 cells wide and 20 cells tall, 
-  with an additional 20 cell buffer zone above the top of the playfield, usually hidden or obstructed by the field frame. 
-  If the hardware permits, a sliver of the 21st row is shown to aid players manipulate the active piece in that area.
-  Some games have a smaller matrix, such as Tetris Giant.
-
-
-* Super Rotation System
-
-  Super Rotation System (also known as SRS) specifies tetromino rotation and wall kicks. OK
-  Additionally, all rotations are reversible, if one is possible, the opposite is also possible.  IDK
-  For later games, Initial Rotation System (IRS) may be included; IRS allows piece rotations to be made during ARE by holding a rotation button.  NO
-
-
-* Tetromino starting positions
-
-  Tetrominoes appear on the 21st and 22nd rows of the playfield, centered and rounded to the left when needed. 
-  They must start with their flat side down, and move down immediately after appearing.
-  Recent modern games would have the spawning positions lower by one or two rows, such as tetris.com.
-
-
-* Piece preview
-
-  The piece previews (known as the Next Queue in the guideline) show the player the next pieces that will come into play. Some games have up to six previews, 
-  and some the option to change the amount. The queue can either be displayed on the right or the top of the playfield, 
-  with the next active piece being the closest to the top of the playfield. Pieces should be displayed in their starting orientations.
+* Super Rotation System all rotations are reversible, if one is possible, the opposite is also possible. ?????
 
 
 * Hold
@@ -33,69 +8,25 @@
   If there is already a piece in the hold queue, and the player holds the active piece, they are swapped, and the piece resets at the top of the playfield,
   becoming the new active piece. Hold cannot be used again until the piece locks down. Some games don't have the required space to display a hold piece, 
   or that lack the necessary amount of buttons, may skip this mechanic. The combination of hold piece and Random Generator allows the player to play forever. 
-  For later games, Initial Hold System (IRS) may be included; IHS allows the next pieces to be held instantly during ARE by holding the Hold button.
 
 
 * Controller mappings
 
-  Standard mappings for console and handheld gamepads:
-  Up, Down, Left, Right on joystick perform locking hard drop, non-locking soft drop (except first frame locking in some games), left shift, and right shift respectively.
-  Left fire button rotates 90 degrees counterclockwise, and right fire button rotates 90 degrees clockwise.
-  Standard mappings different from console/handheld gamepads for computer keyboards:
   Left and right arrow keys: Piece shifting
   Up arrow key: Rotating 90 degrees clockwise
   Down arrow key: Non-locking soft drop
   Space bar: Locking hard drop
   C key / Shift key: Hold piece
   Z key / Left Control key: Rotating 90 degrees counterclockwise
-  Standard mappings for mobile keypads
-  Standard mappings for remote controls
 
-Timings
-Marathon speed curve is based on that used in Tetris Worlds.
-Designated soft drop speed. Details vary between guideline versions.
-0.5 second lock delay when gravity is less than 20G.
 
-Levels
-Player may only level up by clearing lines. Required lines depends on the game. Players can choose the level they wish to start on.
+* Scoring
 
-Game over conditions
-The player tops out when a piece is spawned overlapping at least one block, a piece locks completely above the visible portion of the playfield, or a block is pushed above the 20-row buffer zone.
-
-Scoring
-Scoring system, including Back-to-Back recognition rules
-Combo recognition
-Perfect clear recognition (for later games)
-Garbage
-Line attack garbage system in multiplayer.
-T-Spin detection
-T-Spin rules based on the 3-corner method, and T-Spin Mini rules based on the pointing side cell method.
-Recommended but non-mandatory
-30 Hz DAS, as seen in Puyo Puyo Tetris and Tetris Effect. The following piece handling values are as follows (in 120Hz / 60FPS time):
-Delayed Auto Shift (DAS): 10 frames (≅ 167 milliseconds / 6Hz)
-Auto-repeat rate (ARR): 2 frames (≅ 33 milliseconds / 30Hz)
-Entry delay (ARE): 6 frames (≅ 100 milliseconds / 10Hz)
-Earlier guidance suggested DAS no faster than Tetris Zone. [1] (However, some Japanese games blend the Guideline with the Sega tradition of 1G DAS: Tetris New Century, Kiwamemichi, and the TGM series.)
-Marathon, Sprint, and Ultra modes. In general, Sprint and Ultra will only be omitted for hardware or design reasons.
-Game title should begin with "Tetris".
-Although Guideline-compliant games share many traits, they also have differences in many aspects as well. There are a few instances where a game will break a trait which is shared by all other games thought to be compliant. Examples of this include the lack of the hold function and the T-spin's ability to start and continue Back-to-Back chains in Tetris (iPod), and the inverted rotation button layout of TGM3 and TGM ACE (or Kiwamemichi, depending on interpretation). No explanations have been given for the reasons of these games' deviations.
-
-Certain games, such as Tetris Online (Japan) and the handheld electronic games by Radica Games would sometimes defy the guidelines despite being "Official Licensed Tetris Products".
-
-Guideline Versions
-Henk Rogers has been quoted as revising the guideline annually. Known versions of the guideline include 2002, 2005, 2006 and 2009, and guideline 2002 games have been built from scratch and released as late as 2005.
-
-So far, the first confirmed guideline 2005 game, TGM ACE, has been released in December 2005, while the first confirmed guideline 2006 game, Tetris: New Century (although iPod Tetris released earlier behaves similarly), was released on September 2006. Therefore, it can be conjectured that the schedule of a new guideline version is released somewhere between the middle to the latter half of the year. Mihara's blog has mentioned discussions on revising the guideline in 2008 and 2010. The leaked guideline is dated March 2009.
-
-While many games have no publicly visible indication of the guideline version by the developer or publisher, some games have had their exact guideline versions made clear by them. They are listed in the Guideline compliant game differences page.
-
-Known or suspected modifications
-Buffer zone size (in 2002 versions, at least 2 rows)
-T-Spin and T-Spin Mini recognition rules
-2005: 3-corner T
-2006: 3-corner T, no kick
-Lock delay: the 15-move reset limit was specified by 2009 and present in Tetris Zone (2007), while earlier games are known to use unlimited resets instead.
-Rewarding of Back-to-Back chains. Recognition method depends in the game.
-Soft drop speed; Tetris Zone uses 20 times the current level's fall speed, while other games have different speeds.
-Scoring and combos were fixed some time after 2006.
+  Scoring system, including Back-to-Back recognition rules
+  Combo recognition
+  Perfect clear recognition (for later games)
+  Garbage
+  Line attack garbage system in multiplayer.
+  T-Spin detection
+  T-Spin rules based on the 3-corner method, and T-Spin Mini rules based on the pointing side cell method.
 

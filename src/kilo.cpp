@@ -1,7 +1,7 @@
 #include "game.h"
 #include "render.h"
 #include "snake.h"
-#include "tetris.h"
+#include "tetris/tetris.h"
 #include <unistd.h>
 
 IGame *game;

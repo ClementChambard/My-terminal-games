@@ -5,6 +5,7 @@
 
 void start_raw_mode();
 void ab_append(std::string const &);
+void ab_appendf(const char *, ...);
 void ab_render();
 
 struct color {
@@ -23,12 +24,14 @@ struct color {
   int r, g, b;
 };
 
+void ab_color(int color_num);
+void ab_color(color color_val);
 void ab_rect(int x1, int y1, int x2, int y2, int color_num = 37);
 void ab_clear();
 void ab_pixel_here(int color_num = 37);
 void ab_pixel_here(color color_val);
-void ab_pixel(int x1, int y1, int color_num = 37);
-void ab_pixel(int x1, int y1, color color_val);
-void ab_cursor(int x, int y);
+void ab_pixel(int x1, int y1, int color_num = 37, bool halfX = false);
+void ab_pixel(int x1, int y1, color color_val, bool halfX = false);
+void ab_cursor(int x, int y, bool halfX = false);
 
 #endif // !RENDER_H

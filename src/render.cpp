@@ -31,39 +31,56 @@ int lastCol = 37;
 color lastCol_val = 0xFFFFFF;
 
 void ab_pixel_here(color color_val) {
+  ab_color(color_val);
+  ab.append("\u2588\u2588");
+}
+
+void ab_pixel(int x1, int y1, color color_val, bool halfX) {
+  ab_cursor(x1, y1, halfX);
+  ab_pixel_here(color_val);
+}
+
+void ab_append(std::string const &s) { ab.append(s); }
+void ab_appendf(const char *fmt, ...) {
+  va_list args;
+  va_start(args, fmt);
+  static char buf[100];
+  vsprintf(buf, fmt, args);
+  ab.append(buf);
+}
+
+void ab_color(int color_num) {
+  if (lastCol != color_num) {
+    lastCol = color_num;
+    ab.appendf("\x1b[%dm", color_num);
+  }
+}
+
+void ab_color(color color_val) {
   if (lastCol != 38 || lastCol_val != color_val) {
     lastCol = 38;
     lastCol_val = color_val;
     ab.appendf("\x1b[38;2;%d;%d;%dm", color_val.r, color_val.g, color_val.b);
   }
-  ab.append("\u2588\u2588");
 }
-
-void ab_pixel(int x1, int y1, color color_val) {
-  ab_cursor(x1, y1);
-  ab_pixel_here(color_val);
-}
-
-void ab_append(std::string const &s) { ab.append(s); }
 
 void ab_render() { ab.render(); }
 
 void ab_clear() { ab.append("\x1b[H\x1b[J"); }
 
 void ab_pixel_here(int col) {
-  if (lastCol != col) {
-    lastCol = col;
-    ab.appendf("\x1b[%dm", col);
-  }
+  ab_color(col);
   ab.append("\u2588\u2588");
 }
 
-void ab_pixel(int x1, int y1, int col) {
-  ab_cursor(x1, y1);
+void ab_pixel(int x1, int y1, int col, bool halfX) {
+  ab_cursor(x1, y1, halfX);
   ab_pixel_here(col);
 }
 
-void ab_cursor(int x, int y) { ab.appendf("\x1b[%d;%dH", y, x * 2); }
+void ab_cursor(int x, int y, bool halfX) {
+  ab.appendf("\x1b[%d;%dH", y, x * 2 + halfX);
+}
 
 void ab_rect(int x1, int y1, int x2, int y2, int color_num) {
   for (int i = y1; i <= y2; i++) {
