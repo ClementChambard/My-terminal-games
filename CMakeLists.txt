@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
-project("kilo")
+project("Terminal games")
 
 file(GLOB_RECURSE SRCS src/*.cpp)
 
-add_executable(kilo ${SRCS})
+add_executable(tetris ${SRCS})
